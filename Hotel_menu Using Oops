@@ -1,0 +1,61 @@
+class MenuShow:
+    def __init__(self):
+        self.Menudata=pd.read_csv(r"D:\Downloads\Indian_Food_Menu_Jaipur_April_2025.csv")
+        self.Menudata.columns=self.Menudata.columns.str.strip()
+        print(self.Menudata)
+        self.input1=[]
+        for i in range(2):
+            dish_name = input("Enter the dish name: ").strip()
+            self.input1.append(dish_name)
+    def Menuinput(self):
+        total=0
+        total2=0
+        menu=[]
+        prices=[]
+        prices2=[]
+        menu2=[]
+        for i in self.input1:
+            self.dishName=self.Menudata[self.Menudata["Dish_Name"].str.lower()==str(i).lower()]
+            try:
+                if(i not   in self.dishName["Dish_Name"].values):
+                    price=self.dishName["Price"].values[0]
+                    total+=price
+                    menu.append(i)
+                    prices.append(price)
+            except IndexError:
+                print("This is Index Error \n")
+                break
+        first_order = [f"{m} - ₹{p}" for m, p in zip(menu, prices)]
+        if(first_order):
+            print("\n🧾 Your First Order:")
+            print(first_order)
+        else:
+            print("This dish is not avilabel")
+        print(f"THis is your total,{total}")
+        print("You Want to change anything")
+        change = input("Yes/No").strip()
+        while True:
+            if (change.lower() == "yes"):
+                try:
+                    nextdishName=input("Enter the Dish Name")
+                    self.dishName2=self.Menudata[self.Menudata["Dish_Name"].str.lower()==nextdishName.lower()]
+                    if(nextdishName not in self.dishName2["Dish_Name"].values):
+                        menu2.append(nextdishName)
+                        prices=self.dishName2["Price"].values[0]
+                        prices2.append(prices)
+                        total2+=prices
+                except   IndexError :
+                    print("This dish is not availabel")
+                    break
+            else:
+                print("Enter the Write choise")
+                break
+        new_order=[f"{item_menu} - {item_price}" for item_menu,item_price in zip(menu2,prices2)] 
+        
+        print("This is your first order:", " , ".join(first_order))
+        print("This is your second order:", " , ".join(new_order))
+        grand_total=(total+total2)
+        print(f"This is your Grand total-{grand_total}")
+        
+obj=MenuShow()
+obj.Menuinput()
