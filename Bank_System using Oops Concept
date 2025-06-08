@@ -1,0 +1,66 @@
+import qrcode
+#  Bank Account Management System
+def CreateAccount():
+    holderName=input("Enter the Name")
+    AccountNumber=input("Enter the Account Number")
+    if(not AccountNumber.isdigit()):
+         print("❌ Please enter a valid account number (digits only).")
+    if(len(AccountNumber)!=12):
+        print("❌ Please enter a valid account number should be 12 digit.")
+    else:
+        MobileNumber=input("Enter the Mobile Number ")
+        if(not MobileNumber.isdigit()):
+            print("❌ Please enter a valid account number (digits only).")
+        else:
+            IFScode=input("Enter the IFScode")
+            HolderDetails={"Holder-Name":holderName,"Account-Number":AccountNumber,"Mobile-Number":MobileNumber,"IFS-code":IFScode}
+            print(HolderDetails)   
+            
+def BankAccount():
+    def Deposit__withdrawal_Currentbalance():
+        Money=0
+        while True:
+            print("\n💼 Bank Operations")
+            print("1️⃣  Deposit")
+            print("2️⃣  withdrawal")
+            print("3️⃣  Check Balance")
+            print("4️⃣  Exit")
+            choice = input("Enter your choice: ")
+            if(choice=="1"):
+                try:
+                    amount=int(input("Enter the amount for Deposit"))
+                    if(amount>0):
+                        Money+=amount
+                        print(f"✅ ₹{amount} deposited successfully. Total Balance: ₹{Money}")
+                    else:
+                        print("❌ Invalid choice. Please select a valid option.")
+                except ValueError:
+                    print("❌ Invalid input. Please enter a number.")
+            elif(choice == "2"):
+                try:
+                    amount=int(input("Enter the withdrawal money"))
+                    if(amount>0):
+                        Money-=amount
+                        print(f"✅ ₹{amount} withdrawal successfully. Total Balance: ₹{Money}")
+                    else:
+                         print("❌ Invalid choice. Please select a valid option.")
+                except ValueError:
+                    print("❌ Invalid input. Please enter a number.")
+            elif(choice=="3"):
+                print(f"💰 Current Balance: ₹{Money}")
+            elif(choice=="4"):
+                 print("👋 Exiting. Thank you!")
+                 qrcodeprice=qrcode.make(Money)
+                 qrcodeprice.show(qrcodeprice)
+                 break
+            else:
+                print("❌ Invalid choice. Please select a valid option.")
+            
+    Deposit__withdrawal_Currentbalance()
+
+
+CreateAccount()
+BankAccount()
+            
+
+        
