@@ -1,0 +1,52 @@
+question=("Q-1 what is smallest prime number")
+list1=["A=1","B=2","c=3","D=5"]
+correct_Ans=0
+incorect_Ans=0
+
+B=("2")
+
+Ans=("B")
+print(question)
+for j in list1:
+    print(j)
+for i in range(0,1):
+        no = input("Write the answer (A, B, C, or D): ")
+        if (no==Ans):
+            print("yes!,this is correct Ans")    
+            correct_Ans+=1
+        else:
+            print("no this is not correct Ans is",Ans)
+            incorect_Ans+=1
+        if (no==Ans or no!=Ans):  
+            question2=("Q-2 Which country drinks the most coffee per capital")
+            print(question2)
+            list2=["A=Finland","B=India","C=America","D=china"]
+            Ans2=("A")
+            for k in list2:
+                print(k)
+            input2=input("Write the answer (A, B, C, or D): ")
+            if input2==Ans2:
+                print("yes!,this is correct Ans")
+                correct_Ans+=1
+            else:
+                print("no this is not correct Ans")
+                incorect_Ans+=1
+        if(input2==Ans2 or input2!=Ans2):
+            question3=("Q-3 Where did sushi originate")
+            print(question3)
+            list3=["A=China","B-france","C-Japan","D-india"]
+            Ans3=("C")
+            for l in list3:
+                print(l)
+            input3=input("Write the answer (A, B, C, or D): ")
+            if (input3==Ans3):
+                print("yes!,this is correct Ans")
+                correct_Ans+=1
+            else:
+                print("no this is not correct Ans")
+                incorect_Ans+=1
+
+print("correct ans is",correct_Ans)
+print("incorrect ans is ",incorect_Ans)
+
+
