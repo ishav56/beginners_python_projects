@@ -1,0 +1,30 @@
+import random
+
+choises=("rps")
+computer_choise=random.choice(choises)
+
+for i in range(0,5):
+    input1=input("Rock,Paper,Seisor?(r/p/s):")
+    if input1 not in choises:
+        print("invalid")
+        break
+    print('your choise',{input1})
+    print("computer choise",{computer_choise})
+    if(input1==computer_choise):
+        print("Tie Match")
+    elif(input1=="r" and computer_choise=="s"):
+        print("you win")
+    elif(input1=="s" and computer_choise=="p"):
+        print("you win")
+    elif(input1=="r" and computer_choise=="p"):
+        print("you win")
+    else:
+        print("computer win")
+    input2=input("you want to continou(y/n):")
+    if(input2=="y"):
+        continue
+    elif(input2=="n"):
+        print("Thanku for Playing")
+        break
+    else:
+        print("Lose the match")
