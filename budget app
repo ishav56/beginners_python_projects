@@ -1,0 +1,45 @@
+budget app
+
+input1 = int(input("Please enter your initial budget: "))
+listadd = []
+totalamount = 0
+
+
+for j in range(0,5):
+    if input1 >= 100:
+        print("What would you like to do?")
+        list1 = ["1. Add an expense", "2. Show budget details", "3. Exit"]
+        for i in list1:
+            print(i)
+        
+        input2 = input("Enter your choice (1/2/3): ")
+        
+        if input2 == "1":
+            input3 = input("Enter expense description: ")
+            amount = int(input("Enter expense amount: "))
+            listadd.append((input3,amount))
+            totalamount += amount
+            print("Added expense:", input3, "Amount:", amount)
+                
+        if input2 == "2":
+            print("Total Budget:", input1)
+            
+            for disc, amt in listadd:
+                print("Expense:", disc, ":", amt)
+                print("Total Spent:", totalamount)
+                print("Remaining Budget:", input1 - totalamount)
+        
+        if input2 == "3":
+            print("Total Budget:", input1)
+            for disc, amt in listadd:
+                print("Expense:", disc, ":", amt)
+            print("Total Spent:", totalamount)
+            totalprice=input1-totalamount
+            print("Remaining Budget:", totalprice)
+            print("Thank you for using the Budget App!")
+            break
+        elif totalamount>input1:
+            print("Expense exceeds remaining budget. Try again.")
+            break
+else:
+    print("Budget is too low to add expenses.")
